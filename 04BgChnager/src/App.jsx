@@ -1,9 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 import './App.css'
 import Button from './components/Button'
 
 function App() {
-  const [color, setColor] = useState('olive')
+  const [color, setColor] = useState(localStorage.getItem('color') || 'olive')  
+
+  useEffect(() => {
+    localStorage.setItem('color', color);
+  }, [color]);
 
   return (
       <div className="w-full h-screen duration-200"
